@@ -1,0 +1,20 @@
+# Jsonnet bundler
+vendor/
+.jsonnetfile.lock.json
+
+# OS
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Test outputs
+*.json
+*.yaml
+!jsonnetfile.json
+!jsonnetfile.lock.json
