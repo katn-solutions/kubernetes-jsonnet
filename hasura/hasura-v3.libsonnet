@@ -1,5 +1,5 @@
-local servicemonitors_v1 = import '../servicemonitors/v1.libsonnet';
 local serviceaccounts_v0 = import '../serviceaccounts/v0.libsonnet';
+local servicemonitors_v1 = import '../servicemonitors/v1.libsonnet';
 
 {
   resources(

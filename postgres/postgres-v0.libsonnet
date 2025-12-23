@@ -1,9 +1,4 @@
-local imagerepos_v0 = import '../imagerepositories/v0.libsonnet';
-local serviceaccounts_v0 = import '../serviceaccounts/v0.libsonnet';
-local servicemonitors_v0 = import '../servicemonitors/v0.libsonnet';
 local vaults_v0 = import '../vaults/v0.libsonnet';
-
-local port = 5432;
 
 {
   resources(

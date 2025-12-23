@@ -1,5 +1,3 @@
-local servicemonitor_v0 = import '../servicemonitors/v0.libsonnet';
-
 {
   resources(
     account_number,
@@ -24,11 +22,6 @@ local servicemonitor_v0 = import '../servicemonitors/v0.libsonnet';
     };
 
     local redis_output = '%(resource_name)s-redis.json' % fmt_context;
-
-    local config_output = '%(resource_name)s-redis-config.json' % fmt_context;
-    local config_name = '%(resource_name)s-redis-config' % fmt_context;
-
-    local ingress_output = '%(resource_name)s-redis-ingress.json' % fmt_context;
     local servicemonitor_output = '%(resource_name)s-servicemonitor.json' % fmt_context;
 
     {

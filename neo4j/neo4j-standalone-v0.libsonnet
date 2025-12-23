@@ -1,5 +1,3 @@
-local podmonitors_v0 = import '../podmonitors/v0.libsonnet';
-local promrules_v0 = import '../prometheusrules/v0.libsonnet';
 local serviceaccounts_v0 = import '../serviceaccounts/v0.libsonnet';
 
 {
@@ -36,8 +34,6 @@ local serviceaccounts_v0 = import '../serviceaccounts/v0.libsonnet';
       iam_role_name='neo4j-' + app_name,
     );
 
-    local config_checksum_key = 'checksum/%(app_name)s-config' % fmt_context;
-    local env_checksum_key = 'checksum/%(app_name)s-env' % fmt_context;
 
     {
       [server_config_output]: {

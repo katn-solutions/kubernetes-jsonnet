@@ -1,5 +1,3 @@
-local port = 5432;
-
 {
   resources(
     name,

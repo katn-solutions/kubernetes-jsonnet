@@ -1,5 +1,3 @@
-local servicemonitor_v0 = import '../servicemonitors/v0.libsonnet';
-
 {
   resources(
     account_number,

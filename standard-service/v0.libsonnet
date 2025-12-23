@@ -1,6 +1,5 @@
 local imagerepos = import '../imagerepositories/v0.libsonnet';
 local serviceaccounts = import '../serviceaccounts/v0.libsonnet';
-local servicemonitors = import '../servicemonitors/v0.libsonnet';
 
 {
   resources(

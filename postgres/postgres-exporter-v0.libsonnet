@@ -1,4 +1,3 @@
-local imagerepos_v0 = import '../imagerepositories/v0.libsonnet';
 local serviceaccounts_v0 = import '../serviceaccounts/v0.libsonnet';
 local servicemonitors_v0 = import '../servicemonitors/v0.libsonnet';
 local vaults_v0 = import '../vaults/v0.libsonnet';
@@ -75,12 +74,6 @@ local port = 9187;
       },
     );
 
-    local imagerepository = imagerepos_v0.resources(
-      app_name,
-      namespace_name,
-      account_number,
-      region,
-    );
 
     {
       [deployment_output]: {

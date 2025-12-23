@@ -1,4 +1,3 @@
-local port = 5432;
 local podmonitors_v0 = import '../podmonitors/v0.libsonnet';
 
 {
