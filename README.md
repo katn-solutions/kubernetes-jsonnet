@@ -1,4 +1,4 @@
-# Jsonnet Kubernetes Libraries
+# Jsonnet Kubernetes Factories
 
 **Production-tested Jsonnet libraries for Kubernetes resource generation**
 

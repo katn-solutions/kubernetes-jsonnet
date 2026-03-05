@@ -87,6 +87,8 @@ local vaults_v0 = import '../vaults/v0.libsonnet';
             },
           },
           description: '%s application' % app_name,
+          primaryUpdateStrategy: 'unsupervised',
+          primaryUpdateMethod: 'switchover',
           // imageName: '',
           backup: {
             barmanObjectStore: {
@@ -243,6 +245,8 @@ local vaults_v0 = import '../vaults/v0.libsonnet';
             },
           },
           description: 'hasura database',
+          primaryUpdateStrategy: 'unsupervised',
+          primaryUpdateMethod: 'switchover',
           backup: {
             barmanObjectStore: {
               destinationPath: hasura_backup_path,

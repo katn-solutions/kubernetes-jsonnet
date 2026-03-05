@@ -184,6 +184,8 @@ local prometheusrules_v2 = import '../prometheusrules/v2.libsonnet';
         spec: {
           affinity: affinity_computed,
           description: app_name + ' db',
+          primaryUpdateStrategy: 'unsupervised',
+          primaryUpdateMethod: 'switchover',
           imageName: image,
           backup: backup,
           postgresql: {

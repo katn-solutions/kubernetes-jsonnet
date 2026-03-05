@@ -93,6 +93,8 @@ local podmonitors_v0 = import '../podmonitors/v0.libsonnet';
         spec: {
           affinity: affinity,
           description: app_name + ' db',
+          primaryUpdateStrategy: 'unsupervised',
+          primaryUpdateMethod: 'switchover',
           imageName: image,
           backup: backup,
           postgresql: {

@@ -16,22 +16,25 @@ JSONNET_FMT := jsonnetfmt -n 2 --max-blank-lines 2 --string-style s --comment-st
 JSONNET_LINT := jsonnet-lint
 JSONNET := jsonnet
 
-.PHONY: help all fmt lint test clean
+.PHONY: all help fmt lint test validate clean
+
+.DEFAULT_GOAL := all
 
 help:
 	@echo "Available targets:"
-	@echo "  make fmt      - Format all jsonnet files in place"
-	@echo "  make lint     - Lint all jsonnet files"
-	@echo "  make test     - Run jsonnet tests"
-	@echo "  make all      - Run fmt, lint, and test"
-	@echo "  make clean    - Remove generated test files"
+	@echo "  make fmt       - Format all jsonnet files in place"
+	@echo "  make lint      - Lint all jsonnet files"
+	@echo "  make test      - Run jsonnet tests"
+	@echo "  make validate  - Validate generated Kubernetes YAML"
+	@echo "  make all       - Run fmt, lint, test, and validate"
+	@echo "  make clean     - Remove generated test files"
 	@echo ""
 	@echo "Requirements:"
 	@echo "  go install github.com/google/go-jsonnet/cmd/jsonnet@latest"
 	@echo "  go install github.com/google/go-jsonnet/cmd/jsonnet-lint@latest"
 	@echo "  go install github.com/google/go-jsonnet/cmd/jsonnetfmt@latest"
 
-all: fmt lint test
+all: fmt lint test validate
 
 # Format all jsonnet files
 fmt:
@@ -62,6 +65,20 @@ test:
 		echo "✓ All tests passed"; \
 	else \
 		echo "ℹ No test directory found - skipping tests"; \
+	fi
+
+# Validate that tests produce valid Kubernetes YAML
+validate:
+	@echo "Validating generated Kubernetes manifests..."
+	@if [ -d "test" ]; then \
+		for f in test/*_test.jsonnet; do \
+			echo "  Validating $$f"; \
+			$(JSONNET) "$$f" | python3 -m json.tool > /dev/null 2>&1 || \
+				(echo "✗ Invalid JSON from $$f" && exit 1); \
+		done; \
+		echo "✓ All manifests are valid JSON"; \
+	else \
+		echo "ℹ No test directory found - skipping validation"; \
 	fi
 
 # Clean generated files

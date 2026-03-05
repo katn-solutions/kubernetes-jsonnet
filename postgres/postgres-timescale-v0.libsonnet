@@ -76,6 +76,8 @@
             },
           },
           description: app_name + ' db',
+          primaryUpdateStrategy: 'unsupervised',
+          primaryUpdateMethod: 'switchover',
           // imageName: '',
           backup: {
             barmanObjectStore: {
